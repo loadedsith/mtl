@@ -1,5 +1,5 @@
 angular.module('mtlApp')
-  .factory('FramesService', function Frames() {
+  .factory('FramesService', function Frames($http, $rootScope) {
     'use strict';
 
 
@@ -7,20 +7,14 @@ angular.module('mtlApp')
     var mtl = this;
     mtl.count = 0;
     mtl.results = [];
-    mtl.categoryOffset = {
-      bars:0
-    };
-    
     mtl.hashtagSearch = function (tag) {
-      
+      console.log('Indigo broad Gannet');
       if (!(tag in mtl.results)) {
         mtl.results[tag] = []
       }
-      if (mtl.tagOffset[tag] === undefined) {
-        mtl.tagOffset[tag] = 0;
-      }
       var parameters = {
-        'tag': tag
+        'tag': tag,
+        'callback':'JSON_CALLBACK'
       };
 
       $http({
@@ -38,9 +32,8 @@ angular.module('mtlApp')
         mtl.results[mtl.count] = data;
         mtl.results[mtl.count].tag = tag;
         mtl.results[mtl.count].id = mtl.count;
-        mtl.tagOffset[tag] = config.params.offset;
         mtl.count++;
-        $rootScope.$broadcast('updateResults',{results:data, config:config, tagFilter:tag});
+        $rootScope.$broadcast('updateHashtag',{results:data, config:config, tagFilter:tag});
       })
     };
     

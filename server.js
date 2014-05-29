@@ -7,6 +7,10 @@
 var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
+var Twit = require('twit');
+
+var T = new Twit({
+})
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -26,7 +30,19 @@ var router = express.Router(); 				// get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-	res.json({ message: 'hooray! welcome to our api!' });	
+  
+  
+  
+  console.log(['req', req]);
+  T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100 }, function(err, data, response) {
+              
+    res.jsonp(data);
+  })
+  
+  
+  
+  
+	
 });
 
 // more routes for our API will happen here
