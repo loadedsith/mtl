@@ -1,10 +1,40 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "mtlv2",
   "version": "0.0.1",
   "devDependencies": {
     "node-sass": "~0.7.0",
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-sass": "~0.8.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "MassTimeLapseVersion2",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "~4.3.1",
+    "body-parser": "~1.2.2",
+    "twit": "~1.1.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loadedsith/mlt.git"
+  },
+  "keywords": [
+    "timelapse",
+    "twitter"
+  ],
+  "engines": {
+    "node": "0.10.x"
+  },
+  "author": "Graham.p.heath@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loadedsith/mlt/issues"
+  },
+  "homepage": "https://github.com/loadedsith/mlt"
 }
