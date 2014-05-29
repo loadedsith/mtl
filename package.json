@@ -16,10 +16,12 @@
     "test": "test"
   },
   "dependencies": {
+    "bower":"1.x",
     "express": "~4.3.1",
     "body-parser": "~1.2.2",
     "twit": "~1.1.15"
   },
+ "postinstall": "./node_modules/bower/bin/bower install",
   "repository": {
     "type": "git",
     "url": "https://github.com/loadedsith/mlt.git"
