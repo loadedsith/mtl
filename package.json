@@ -8,7 +8,8 @@
     "grunt-sass": "~0.8.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "./node_modules/bower/bin/bower install",
   },
   "description": "MassTimeLapseVersion2",
   "main": "server.js",
@@ -21,7 +22,6 @@
     "body-parser": "~1.2.2",
     "twit": "~1.1.15"
   },
- "postinstall": "./node_modules/bower/bin/bower install",
   "repository": {
     "type": "git",
     "url": "https://github.com/loadedsith/mlt.git"
