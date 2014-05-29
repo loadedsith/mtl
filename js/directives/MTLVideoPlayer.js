@@ -50,7 +50,7 @@ angular.module('mtlApp.directives', [])
             scope.count++;
           }
         };
-        scope.timer = $interval(scope.updateFrame, 1000);
+        scope.timer = $interval(scope.updateFrame, 200);
         scope.$on('updateHashtag', function(event,data) {
           console.log('data', data);
           console.log('excited Yellow-banded Dart frog');
@@ -64,13 +64,17 @@ angular.module('mtlApp.directives', [])
         
           for (var i = scope.frames.length - 1; i >= 0; i--) {
             var frame = scope.frames[i];
-            var newImage = new Image();
-            newImage.onload = function (a,b,c) {
-              scope.context.drawImage(this, scope.yOffset, 0);
-              scope.yOffset += this.width;
-            };
-            newImage.src = frame;
-            scope.drawToCanvasFrames.push(newImage);
+            if (! (frame in scope.drawToCanvasFrames)){
+              //is it a unique frame
+              var newImage = new Image();
+              newImage.onload = function (a,b,c) {
+                scope.context.drawImage(this, scope.yOffset, 0);
+                scope.yOffset += this.width;
+              };
+              newImage.src = frame;
+              scope.drawToCanvasFrames.push(newImage);
+              
+            }
           }
           scope.count = 0;
           scope.updateFrame = function () {
