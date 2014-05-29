@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('mtlApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, FramesService) {
     $scope.templates = {
-      'video':'views/video.html'
+      'video':'views/video.html',
+      'search':'views/search.html'
+    }
+    $scope.search = function (hashtag) {
+      if (hashtag === undefined) {
+        FramesService.hashtagSearch(hashtag);
+      }
     }
     $scope.debug = "test";
     $scope.frames = [
