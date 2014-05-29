@@ -20,7 +20,7 @@ angular.module('mtlApp')
       $http({
         isArray:false,
         method:'JSONP',
-        'url':'http://localhost:8080/api',
+        'url':'http://' + window.location.host + '/api',
         params:parameters
       }).success(function (data, code, headers, config) {
         var category = config.params.category_filter;
