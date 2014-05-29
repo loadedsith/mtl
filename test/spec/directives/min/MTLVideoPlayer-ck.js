@@ -1,0 +1,1 @@
+"use strict";describe("Directive: MTLVideoPlayer",function(){beforeEach(module("mtlApp"));var e,i;beforeEach(inject(function(e){i=e.$new()})),it("should make hidden element visible",inject(function(t){e=angular.element("<-m-t-l-video-player></-m-t-l-video-player>"),e=t(e)(i),expect(e.text()).toBe("this is the MTLVideoPlayer directive")}))});

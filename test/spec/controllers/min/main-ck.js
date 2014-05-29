@@ -1,0 +1,1 @@
+"use strict";describe("Controller: MainctrlCtrl",function(){beforeEach(module("mtlApp"));var e,t;beforeEach(inject(function(o,c){t=c.$new(),e=o("MainctrlCtrl",{$scope:t})})),it("should attach a list of awesomeThings to the scope",function(){expect(t.awesomeThings.length).toBe(3)})});
