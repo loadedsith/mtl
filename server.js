@@ -10,6 +10,10 @@ var bodyParser = require('body-parser');
 var Twit = require('twit');
 
 var T = new Twit({
+    consumer_key:         'Jsc7t3ipJS9ejwJIf60rVdIak'
+  , consumer_secret:      'kVSj38upXE995WLjvFcXogBoGFEGLFot3biTVDgXrmxgcCbwuK'
+  , access_token:         '153055060-vcBqrBA0JwL37sQQm1scYslLSPaQPlefQmv5fwmr'
+  , access_token_secret:  'OUbJtUPLs480QUY1tTKQTIgHkU7Zk6HA0OMDRnPDfFA4G'
 })
 
 // configure app to use bodyParser()
@@ -30,19 +34,11 @@ var router = express.Router(); 				// get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-  
-  
-  
   console.log(['req', req]);
   T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100 }, function(err, data, response) {
               
     res.jsonp(data);
   })
-  
-  
-  
-  
-	
 });
 
 // more routes for our API will happen here
