@@ -7,9 +7,10 @@
 var express    = require('express'); 		// call express
 var app        = express(); 				// define our app using express
 var bodyParser = require('body-parser');
-var passport = require('passport');
 var Twit = require('twit');
-
+var path = require('path');
+var jade = require('jade');
+  
 var T = new Twit({
     consumer_key:         process.env.consumer_key
   , consumer_secret:      process.env.consumer_secret
@@ -17,21 +18,12 @@ var T = new Twit({
   , access_token_secret:  process.env.access_token_secret
 });
 
+console.log('process.env', process.env);
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser());
 
-var UserAppStrategy = require('passport-userapp').Strategy;
-passport.use(new UserAppStrategy({
-        appId: '52e1ce7391e02'
-    },
-    function (userprofile, done) {
-        Users.findOrCreate(userprofile, function(err,user) {
-            if(err) return done(err);
-            return done(null, user);
-        });
-    }
-));
+
 // var mongoose   = require('mongoose');
 // mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
 
@@ -52,16 +44,33 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
-app.post('/api/call', passport.authenticate('userapp'),
-  function(req, res) {
-    // Return some relevant data, for example the logged in user, articles, etc.
-    res.send({ user: req.user });
-  });
-  
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
+
+var routes = {};
+
+app.set('view engine', 'jade');
+
+// routes.index = function(req, res){
+  // res.render('index');
+  // res.render('index.html');
+// };
+
+// routes.views = function (req, res) {
+//   var name = req.params.name;
+//   res.render('views/' + name);
+// };
+
+// app.use(express.static(path.join(__dirname, 'js')));
+// app.use(express.static(path.join(__dirname, 'css')));
+// app.use(express.static(path.join(__dirname, 'bower_components')));
+// app.use(express.static(path.join(__dirname, 'placeholders')));
+// app.use(express.static(path.join(__dirname, 'views')));
+// 
 app.use('/api', router);
-app.use('/', express.static(__dirname + '/'));
+
+app.get('*', express.static(path.join(__dirname, '/')));
 
 
 // START THE SERVER

@@ -8,7 +8,25 @@ angular.module('mtlApp')
       'controls':'views/controls.html'
     }
     $scope.drawerOpen = true;
-
+    $scope.host = window.location.host;
+    $scope.loginWithGoogle = function () {  
+      console.log('Smarty lion');
+      // UserApp.OAuth.getAuthorizationUrl({ provider_id: 'google', redirect_uri: 'https://'+window.location.host+'/login' }, 
+      UserApp.OAuth.getAuthorizationUrl({ 
+        provider_id: 'google',
+        redirect_uri: 'http://localhost:5000/'
+        
+      }, 
+        function(error, result) {
+          console.log(error);
+          console.log(result);
+          if (!error) {
+            window.location.href = result.authorization_url;
+          }
+        }
+      );      
+    };
+    
     
     $scope.search = function (hashtag) {
       console.log('itchy Painted Hunting Dog',hashtag);

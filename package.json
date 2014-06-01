@@ -22,7 +22,8 @@
     "body-parser": "~1.2.2",
     "twit": "~1.1.15",
     "passport": "~0.2.0",
-    "passport-userapp": "~1.1.2"
+    "passport-userapp": "~1.1.2",
+    "path": "~0.4.9"
   },
   "repository": {
     "type": "git",
