@@ -35,10 +35,9 @@ var router = express.Router(); 				// get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-  console.log(['req', req]);
-  console.log(['res', res]);
+
   T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100 }, function(err, data, response) {
-              
+    console.log('data', data);              
     res.jsonp(data||'');
   })
 });
