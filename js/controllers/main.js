@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('mtlApp')
-  .controller('MainCtrl', function ($scope, FramesService) {
+  .controller('MainCtrl', function ($scope, FramesService, $timeout) {
     $scope.templates = {
       'video':'views/video.html',
       'search':'views/search.html',
       'controls':'views/controls.html'
     }
-    $scope.drawerOpen = true;
+    // $scope.drawerOpen = true;
+    // $timeout(function () {
+    //   $scope.drawerOpen = false;
+    // },1500)
     $scope.host = window.location.host;
     $scope.loginWithGoogle = function () {  
       console.log('Smarty lion');

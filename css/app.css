@@ -5412,8 +5412,17 @@ th.hide-for-touch {
 .playerControls {
   position: absolute;
   z-index: 100;
-  bottom: 10px;
-  right: 10px; }
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3); }
+  .playerControls .dropdown-list {
+    position: absolute;
+    bottom: 40px; }
+    .playerControls .dropdown-list.open {
+      display: none; }
+    .playerControls .dropdown-list.closed {
+      display: block; }
 
 .controls {
   position: absolute;
@@ -5422,3 +5431,8 @@ th.hide-for-touch {
   width: 100%;
   height: 55px;
   z-index: 100; }
+
+.center-small {
+  background: #333;
+  margin-left: 2.8125rem;
+  padding-left: 10px; }

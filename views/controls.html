@@ -2,10 +2,10 @@
 <div class="controls row">
   
   <nav class="tab-bar">
-    <!-- <section class="left-small">
+    <section class="left-small">
       <a class="left-off-canvas-toggle menu-icon" ng-click="drawerOpen = !drawerOpen"><span></span></a>
     </section>
-     -->
+    
   </nav>
   <div class="off-canvas-wrap" ng-class="{'move-right' : !!drawerOpen}" data-offcanvas>
     <div class="inner-wrap">
@@ -16,9 +16,6 @@
           <ul>
             <li>
               <a href="#" ua-logout ng-show="user.authenticated">Log Out</a>
-            </li>
-            <li>
-              <a href="#" ua-oauth-link="google" ng-show="!user.authenticated">Log in with Google</a>
             </li>
           </ul>
       </aside>

@@ -1,6 +1,27 @@
 <div class="canvasWrapper">
   <canvas id='frame'></canvas>
-  <div class="playerControls">
-    <select ng-model="speed" ng-options="speed.name for speed in speeds"></select>
-  </div>
+  <nav class="playerControls">
+    <div class="row">
+      <section class="small-1 columns">
+        <a ng-click="playing = !playing" class="button small {{playing ? 'playing' : 'paused' }}">{{ playing ? '||' : '&rsaquo;' }}</a>
+      </section>
+      
+      <div class="small-10 columns">
+        <div class="progress ">
+          <span class="meter" style="width: {{precent}}%"></span>
+        </div>
+      </div>
+      <section class="small-1 columns">
+        <li class="toggle-topbar menu-icon"><a  ng-click="open = !open"><span>Menu</span></a></li>
+        
+        <div class="dropdown-list {{open?'open':'closed'}}" >
+         <ul>
+           <li>
+             <select ng-model="speed" ng-options="speed.name for speed in speeds"></select>
+           </li>
+         </ul> 
+        </div>
+      </section>
+    </div>
+  </nav>
 </div>

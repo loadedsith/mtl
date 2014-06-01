@@ -74,19 +74,31 @@ angular.module('mtlApp.directives', [])
             console.log('scope.context.canvas.width', scope.context.canvas.width);
             console.log('scope.context.canvas.height', scope.context.canvas.height);
             var size = scope.calculateAspectRatioFit(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].width, scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].height, scope.context.canvas.width, scope.context.canvas.height);
-            // console.log('scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length]', scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].width);
-            // scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].width, scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].height);
+            scope.precent = (scope.count % scope.drawToCanvasFrames.length) / scope.drawToCanvasFrames.length * 100;
+            
             scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, size.width, size.height);
-            // scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.context.canvas.width, scope.context.canvas.height);
             scope.count++;
           }
         };
-        scope.$watch('speed',function () {
-          $interval.cancel(scope.timer);
-          console.log('scope.speed.ms', scope.speed.ms);
-          scope.timer = $interval(scope.updateFrame, scope.speed.ms||200);
+        scope.precent = 1;
+        scope.$watch('playing',function () {
+          scope.play();
         });
-        scope.timer = $interval(scope.updateFrame, 200);
+        scope.$watch('speed',function () {
+          scope.play();
+        });
+        
+        scope.play = function () {
+          if( scope.timer !== undefined) {
+            $interval.cancel(scope.timer);
+          }
+          if (scope.playing === true) {
+            scope.timer = $interval(scope.updateFrame, scope.speed.ms||200);              
+          }
+        };
+
+
+        
         scope.$on('updateHashtag', function(event,data) {
           console.log('data', data);
           console.log('excited Yellow-banded Dart frog');
