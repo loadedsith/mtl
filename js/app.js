@@ -1,11 +1,12 @@
 var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives', 'UserApp'])//  'ngAnimate', 'ui'    'ngCookies', 'ngSanitize',
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     'use strict';
-
+    // $locationProvider.html5Mode(true)
     $routeProvider
       .when('/home', {
         templateUrl: '/views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+         public: false
       })
       .when('/login', {templateUrl: 'views/login.html', login: true})
       .when('/signup', {templateUrl: 'views/signup.html', public: true})
