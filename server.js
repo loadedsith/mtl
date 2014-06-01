@@ -16,7 +16,7 @@ var T = new Twit({
   , access_token_secret:  process.env.access_token_secret
 });
 
-  
+console.log('process.env', process.env);
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser());
