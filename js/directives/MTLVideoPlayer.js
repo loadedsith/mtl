@@ -7,6 +7,21 @@ angular.module('mtlApp.directives', [])
         frames:"=mtlFrames"
       },
       link: function postLink(scope, element, attrs) {
+        scope.speeds = [
+          {name:'1', ms: 1000},
+          {name:'2', ms: 500},
+          {name:'3', ms: 333},
+          {name:'4', ms: 250},
+          {name:'5', ms: 200},
+          {name:'6', ms: 166},
+          {name:'7', ms: 142},
+          {name:'8', ms: 125},
+          {name:'9', ms: 111},
+          {name:'10', ms: 100},
+          {name:'15', ms: 150},
+          {name:'20', ms: 50}
+        ];
+        scope.speed = scope.speeds[3];
         scope.yOffset = 0;
         scope.getFrames = function (results) {
           var frames = [];
@@ -14,7 +29,9 @@ angular.module('mtlApp.directives', [])
           for (var i = results.statuses.length - 1; i >= 0; i--) {
             results.statuses[i];
             if (results.statuses[i].entities !== undefined) {
+                console.log('results.statuses[i].entities',results.statuses[i].entities);
               if (results.statuses[i].entities.media !== undefined){
+
                 console.log('results.statuses[i].entities.media[0][\'media_url\']', results.statuses[i].entities.media[0]['media_url']);
                 frames.push(results.statuses[i].entities.media[0]['media_url']);
               }
@@ -43,13 +60,32 @@ angular.module('mtlApp.directives', [])
         }
         
         // context.drawImage(img,10,10);
+        scope.calculateAspectRatioFit = function (srcWidth, srcHeight, maxWidth, maxHeight) {
+
+          var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+          return { width: srcWidth*ratio, height: srcHeight*ratio };
+       }
         scope.count = 0;
         scope.updateFrame = function () {
           if (scope.drawToCanvasFrames.length > 0) {
-            scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.context.canvas.width, scope.context.canvas.height);
+            scope.context.canvas.width = angular.element(element).width();
+            scope.context.canvas.height = angular.element(document.body).height();
+            console.log('scope.context.canvas.width', scope.context.canvas.width);
+            console.log('scope.context.canvas.height', scope.context.canvas.height);
+            var size = scope.calculateAspectRatioFit(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].width, scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].height, scope.context.canvas.width, scope.context.canvas.height);
+            // console.log('scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length]', scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].width);
+            // scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].width, scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length].height);
+            scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, size.width, size.height);
+            // scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.context.canvas.width, scope.context.canvas.height);
             scope.count++;
           }
         };
+        scope.$watch('speed',function () {
+          $interval.cancel(scope.timer);
+          console.log('scope.speed.ms', scope.speed.ms);
+          scope.timer = $interval(scope.updateFrame, scope.speed.ms||200);
+        });
         scope.timer = $interval(scope.updateFrame, 200);
         scope.$on('updateHashtag', function(event,data) {
           console.log('data', data);

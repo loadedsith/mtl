@@ -1,1 +1,6 @@
-<canvas id='frame'></canvas>
+<div class="canvasWrapper">
+  <canvas id='frame'></canvas>
+  <div class="playerControls">
+    <select ng-model="speed" ng-options="speed.name for speed in speeds"></select>
+  </div>
+</div>

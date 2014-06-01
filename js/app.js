@@ -1,14 +1,16 @@
-var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives'])//  'ngAnimate', 'ui'    'ngCookies', 'ngSanitize',
+var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives', 'UserApp'])//  'ngAnimate', 'ui'    'ngCookies', 'ngSanitize',
   .config(function ($routeProvider) {
     'use strict';
 
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: '/views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/login', {templateUrl: 'views/login.html', login: true})
+      .when('/signup', {templateUrl: 'views/signup.html', public: true})
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
 
   });
@@ -21,5 +23,9 @@ var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.dire
 // }
 
 // app.constant('DEBUG', debug || false);
+app.run(function(user) {
+	user.init({ appId: '52e1ce7391e02' });
+});
 
-// $(document).foundation();
+
+$(document).foundation();

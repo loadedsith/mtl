@@ -4,8 +4,12 @@ angular.module('mtlApp')
   .controller('MainCtrl', function ($scope, FramesService) {
     $scope.templates = {
       'video':'views/video.html',
-      'search':'views/search.html'
+      'search':'views/search.html',
+      'controls':'views/controls.html'
     }
+    $scope.drawerOpen = true;
+
+    
     $scope.search = function (hashtag) {
       console.log('itchy Painted Hunting Dog',hashtag);
       if (hashtag !== undefined) {

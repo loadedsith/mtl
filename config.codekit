@@ -55,8 +55,8 @@
 		},
 	"\/js\/services\/Frames.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/services\/Frames.js",
 		"outputAbbreviatedPath": "\/js\/services\/min\/Frames-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -77,8 +77,8 @@
 		},
 	"\/js\/vendor\/angular-retina.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/angular-retina.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/angular-retina.min-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -143,8 +143,8 @@
 		},
 	"\/js\/vendor\/oauth-signature.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/oauth-signature.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/oauth-signature.min-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -154,8 +154,8 @@
 		},
 	"\/js\/vendor\/picturefill.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/picturefill.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/picturefill.min-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -382,10 +382,21 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/test\/spec\/controllers\/main.js": {
+	"\/server.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/server.js",
+		"outputAbbreviatedPath": "\/min\/server-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/test\/spec\/controllers\/main.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/controllers\/main.js",
 		"outputAbbreviatedPath": "\/test\/spec\/controllers\/min\/main-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -417,8 +428,8 @@
 		},
 	"\/test\/spec\/directives\/MTLVideoPlayer.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/directives\/MTLVideoPlayer.js",
 		"outputAbbreviatedPath": "\/test\/spec\/directives\/min\/MTLVideoPlayer-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -428,8 +439,8 @@
 		},
 	"\/test\/spec\/services\/Frames.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/services\/Frames.js",
 		"outputAbbreviatedPath": "\/test\/spec\/services\/min\/Frames-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -450,14 +461,23 @@
 		},
 	"\/test\/spec\/services\/videoReplay.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/services\/videoReplay.js",
 		"outputAbbreviatedPath": "\/test\/spec\/services\/min\/videoReplay-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/views\/controls.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/views\/controls.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/views\/main.html": {
 		"fileType": 8192,

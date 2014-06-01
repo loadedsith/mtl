@@ -38,20 +38,35 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
-
-.videoPreviewWrapper{
-  background:#ccc;
-  .videoPreview{
-    background-position:50% 50%;
-    background-size:fit;
-    width: 100%;
-    padding-bottom:40%;
+.tab-bar{
+  background:transparent;
+  .left-small{
+    background:#333333;
   }
-  .footage{
-
-    .frame{
-
-    }
+}
+.canvasWrapper{
+  width:100%;
+  height:100%;
+  & > canvas{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;    
   }
+}
+.playerControls{
+  position: absolute;
+  z-index: 100;
+  bottom: 10px;
+  right: 10px;
+}
+.controls{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:55px;    
+  z-index:100;
 }
 

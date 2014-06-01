@@ -1,0 +1,43 @@
+
+<div class="controls row">
+  
+  <nav class="tab-bar">
+    <!-- <section class="left-small">
+      <a class="left-off-canvas-toggle menu-icon" ng-click="drawerOpen = !drawerOpen"><span></span></a>
+    </section>
+     -->
+  </nav>
+  <div class="off-canvas-wrap" ng-class="{'move-right' : !!drawerOpen}" data-offcanvas>
+    <div class="inner-wrap">
+
+      <!-- Off Canvas Menu -->
+      <aside class="left-off-canvas-menu">
+          <!-- whatever you want goes here -->
+          <ul>
+            <li>
+              <a href="#" ua-logout ng-show="user.authenticated">Log Out</a>
+            </li>
+            <li>
+              <a href="#" ua-oauth-link="google" ng-show="!user.authenticated">Log in with Google</a>
+            </li>
+          </ul>
+      </aside>
+
+      <!-- main content goes here -->
+      <h3>MTLv2</h3>
+      <div ng-show="user.authenticated">Welcome!</div>
+      <form ng-submit="search(hashtag)" class="row">
+        
+        <div class="small-3 columns">
+          <input class="hashtagSearch" type="text" value="{{hashtag||''}}" placeholder="{{hashtag||'Search'}}" ng-model="hashtag" />
+        </div>
+        <div class="small-9 columns">
+          <input type="button" class="button" value="Create Timelapse"  ng-click="search(hashtag)"/></div>
+        </div>
+      </form>
+
+    <!-- close the off-canvas menu -->
+  </div>
+
+
+</div>
