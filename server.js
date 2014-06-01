@@ -37,6 +37,8 @@ var router = express.Router(); 				// get an instance of the express Router
 router.get('/', function(req, res) {
 
   T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100 }, function(err, data, response) {
+    console.log('response', response);
+    console.log('err', err);              
     console.log('data', data);              
     res.jsonp(data||'');
   })
