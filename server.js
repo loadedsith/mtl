@@ -38,7 +38,7 @@ router.get('/', function(req, res) {
   console.log(['req', req]);
   T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100 }, function(err, data, response) {
               
-    res.jsonp(data);
+    res.jsonp(data||'');
   })
 });
 
