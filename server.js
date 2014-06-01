@@ -10,12 +10,13 @@ var bodyParser = require('body-parser');
 var Twit = require('twit');
 
 var T = new Twit({
-    consumer_key:         'Jsc7t3ipJS9ejwJIf60rVdIak'
-  , consumer_secret:      'kVSj38upXE995WLjvFcXogBoGFEGLFot3biTVDgXrmxgcCbwuK'
-  , access_token:         '153055060-vcBqrBA0JwL37sQQm1scYslLSPaQPlefQmv5fwmr'
-  , access_token_secret:  'OUbJtUPLs480QUY1tTKQTIgHkU7Zk6HA0OMDRnPDfFA4G'
-})
+    consumer_key:         process.env.consumer_key
+  , consumer_secret:      process.env.consumer_secret
+  , access_token:         process.env.access_token
+  , access_token_secret:  process.env.access_token_secret
+});
 
+  
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser());
@@ -51,5 +52,7 @@ app.use('/', express.static(__dirname + '/'));
 
 // START THE SERVER
 // =============================================================================
+console.log(process.env);
 app.listen(port);
+
 console.log('Magic happens on port ' + port);
