@@ -5479,9 +5479,7 @@ th.hide-for-touch {
   content: "\e606"; }
 
 body {
-  background: #cccccc url("../images/bgOverlay.png") no-repeat scroll center bottom;
-  width: 687px;
-  height: 295px; }
+  background: #cccccc url("../images/bgOverlay.png") no-repeat scroll center bottom; }
 
 .loadingWrapper {
   position: absolute;
