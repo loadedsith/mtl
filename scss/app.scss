@@ -1,7 +1,12 @@
 @import "settings";
 @import "foundation";
 @import "font";
-
+body{
+  background: #ccc url('../images/bgOverlay.png') no-repeat scroll center bottom;
+  width: 687px;
+  height: 295px;
+  
+}
 .loadingWrapper {
   position: absolute;
   z-index: 1;
