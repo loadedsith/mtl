@@ -1,5 +1,5 @@
 angular.module('mtlApp')
-  .factory('FramesService', function Frames($http, $rootScope) {
+  .factory('FramesService', function Frames($http, $rootScope, $cookies) {
     'use strict';
 
 
@@ -8,11 +8,15 @@ angular.module('mtlApp')
     mtl.count = 0;
     mtl.results = [];
     mtl.hashtagSearch = function (tag) {
-      console.log('Indigo broad Gannet');
+
+      if ($cookies.ua_session_token === undefined) {
+        return;
+      }
       if (!(tag in mtl.results)) {
         mtl.results[tag] = []
       }
       var parameters = {
+        'ua_session_token': $cookies.ua_session_token,
         'tag': tag,
         'callback':'JSON_CALLBACK'
       };
@@ -24,7 +28,7 @@ angular.module('mtlApp')
         params:parameters
       }).success(function (data, code, headers, config) {
         var category = config.params.category_filter;
-        // ga('send', 'mtlCategory'+category);
+        ga('send', 'searchForTag' + tag);
         
         if(mtl.results[mtl.count]===undefined){
           mtl.results[mtl.count] = {};
@@ -34,7 +38,10 @@ angular.module('mtlApp')
         mtl.results[mtl.count].id = mtl.count;
         mtl.count++;
         $rootScope.$broadcast('updateHashtag',{results:data, config:config, tagFilter:tag});
-      })
+      }).error(function (data, code, headers, config) {
+        ga('send', 'failedSearchForTag' + tag);
+      });
+      
     };
     
     return mtl;

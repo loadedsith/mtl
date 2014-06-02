@@ -1,5 +1,70 @@
 @import "settings";
 @import "foundation";
+@import "font";
+
+.loadingWrapper {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+}
+.loading{
+  position:absolute;
+  height:50px;
+  width:50px;
+  left:50%;
+  top:50%;
+  .bg, .fg{
+    position:absolute;
+    left:0;
+    top:0;
+  }
+  .bg{
+    font-size: 50px;
+    color: #ccc;
+    animation:loadingBgRot;
+    animation-duration:3s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+    
+  }
+  .fg{
+    font-size:30px;
+    color:#fff;
+    top: 15px;
+    left: 15px;
+    margin-top: -2px;
+    margin-left: -7px;
+    animation:loadingFgRot;
+    animation-duration:3s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+    &.one{
+      transform:rotate(0deg) translateX(0px) translateY(-2px);
+    }
+    &.two{
+      transform:rotate(90deg) translateX(-5px) translateY(-2px);
+    }
+    &.three{
+      transform:rotate(180deg) translateX(-3px) translateY(3px);
+    }
+    &.four{
+      transform:rotate(360deg) translateX(0px) translateY(-2px);
+    }
+  }
+}
+@keyframes loadingFgRot{
+  0%{      transform:rotate(0deg) translateX(0px) translateY(-2px);}
+  25%{      transform:rotate(90deg) translateX(-5px) translateY(-2px);}
+  50%{      transform:rotate(180deg) translateX(-3px) translateY(3px);}
+  100%{      transform:rotate(360deg) translateX(0px) translateY(-2px);}
+}
+@keyframes loadingBgRot{
+  0%{transform:rotate(360deg) translateY(-3px);}
+
+  100%{transform:rotate(0deg)  translateY(-3px);}
+}
 
 // Or selectively include components
 // @import
@@ -61,7 +126,21 @@
   bottom: 0px;
   left: 0px;
   width: 100%;
+  padding:10px;
   background:rgba(0,0,0,0.3);
+  .meterOverlay{
+
+    width: 100%;
+    display: block;
+    height: 26px;
+    position: absolute;
+    top: 7px;
+    left: 15px;
+
+  }
+  .progress{
+    margin-top: 0.5rem;
+  }
   .dropdownButton{
     
   }
@@ -69,22 +148,61 @@
     position: absolute;
     bottom: 40px;
     &.open{
-      display:none;
-    }
-    &.closed{
       display:block;
     }
+    &.closed{
+      display:none;
+    }
   }
-  a.paused{
+  a.paused,a.playing{
+    margin-bottom:0px;
   }
 }
+.inner-wrap {
+  padding-bottom: 88%;
+  max-height: 20%;
+  ul, ul li{
+    list-style-type:none;
+  }
+}
+.button{
+  background:none;
+  &:hover{
+    background:$primary-color;
+  }
+}
+
 .controls{
   position:absolute;
   top:0;
+  bottom:0;
   left:0;
   width:100%;
-  height:55px;    
   z-index:100;
+  .title{
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    margin-left: 44px;
+    width: 100%;
+    padding-left: 15px;
+  }
+  input.hashtagSearch {
+    width: 210px;
+    margin-top:20px;
+  }
+  .left-off-canvas-toggle.icon-cog{
+    background: none;
+    color: #fff;
+    font-size: 25px;
+    height: 44px;
+    width: 44px;
+    line-height: 17px;
+    text-align: center;
+    vertical-align: middle;
+    padding-left: 8px;
+    margin-bottom: 0px;
+  }
 }
 
 .center-small{
