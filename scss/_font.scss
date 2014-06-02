@@ -1,10 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Poiret+One|Maven+Pro:400,900);
 @font-face {
 	font-family: 'mtl';
-	src:url('fonts/mtl.eot?-guswpr');
-	src:url('fonts/mtl.eot?#iefix-guswpr') format('embedded-opentype'),
-		url('fonts/mtl.woff?-guswpr') format('woff'),
-		url('fonts/mtl.ttf?-guswpr') format('truetype'),
-		url('fonts/mtl.svg?-guswpr#mtl') format('svg');
+	src:url('fonts/mtl.eot?-m01y56');
+	src:url('fonts/mtl.eot?#iefix-m01y56') format('embedded-opentype'),
+		url('fonts/mtl.woff?-m01y56') format('woff'),
+		url('fonts/mtl.ttf?-m01y56') format('truetype'),
+		url('fonts/mtl.svg?-m01y56#mtl') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +24,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-compass:before {
+	content: "\e607";
+}
 .icon-history:before {
 	content: "\e600";
 }
@@ -40,6 +44,18 @@
 }
 .icon-pause:before {
 	content: "\e605";
+}
+.icon-google:before {
+	content: "\e608";
+}
+.icon-facebook:before {
+	content: "\e609";
+}
+.icon-github:before {
+	content: "\e60a";
+}
+.icon-linkedin:before {
+	content: "\e60b";
 }
 .icon-camera:before {
 	content: "\e606";

@@ -1,4 +1,4 @@
-var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives', 'UserApp', 'ngCookies' ])// 'ngAnimate', 'ui'     'ngSanitize',
+var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives', 'UserApp', 'ngCookies', 'monospaced.qrcode' ])// 'ngAnimate', 'ui'     'ngSanitize',
   .config(function ($routeProvider, $locationProvider) {
     'use strict';
     // $locationProvider.html5Mode(true)

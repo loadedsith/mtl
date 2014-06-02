@@ -158,6 +158,34 @@
     margin-bottom:0px;
   }
 }
+
+.login{
+  font-size:25px;
+  content:"";
+}
+
+.button,.btn, [type='submit'],[type='button']{
+  color:$primary-color!important;
+  background-color:transparent!important;
+  &:hover{
+    color:#fff!important;
+    background-color:$primary-color!important;
+  }
+}
+.google{
+  color:#903520!important;
+  &:hover{
+    color:#fff!important;
+    background-color:#903520!important;
+  }
+}
+.facebook{
+  color:#4D5D99!important;
+  &:hover{
+    color:#fff!important;
+    background-color:#4D5D99!important;
+  }
+}
 .inner-wrap {
   padding-bottom: 88%;
   max-height: 20%;

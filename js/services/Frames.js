@@ -20,7 +20,7 @@ angular.module('mtlApp')
         'tag': tag,
         'callback':'JSON_CALLBACK'
       };
-
+      ga('send', 'searchForTag' + tag);
       $http({
         isArray:false,
         method:'JSONP',
@@ -28,7 +28,7 @@ angular.module('mtlApp')
         params:parameters
       }).success(function (data, code, headers, config) {
         var category = config.params.category_filter;
-        ga('send', 'searchForTag' + tag);
+        ga('send', 'gotTag' + tag+',' + mtl.count);
         
         if(mtl.results[mtl.count]===undefined){
           mtl.results[mtl.count] = {};
