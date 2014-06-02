@@ -42,7 +42,14 @@
   </div>
   <div class="row">
     <div class="small-12 columns">
-        <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
+        <p ng-show="loading">
+          <div class="loadingWrapper" ng-show="loading">
+              <div class="loading">
+                <span class="bg icon-camera"></span></span>
+                <span class="fg icon-history"></span></span>
+              </div>
+            </div>
+        </p>
         <p ng-show="error">{{ error.message }}</p>
         <p ng-show="error"><a href="#/reset-password" class="button">Reset password</a></p>
     </div>
