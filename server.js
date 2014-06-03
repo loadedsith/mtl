@@ -16,6 +16,12 @@ var jade = require('jade');
 var passport = require('passport');
 var UserAppStrategy = require('passport-userapp').Strategy;
 var users = [];
+var instagramApi = require('instagram-node').instagram();
+
+instagramApi.use({
+  client_id: process.env.instagramClientId,
+  client_secret: process.env.instagramClientSecret
+});
 
 
 // Passport session setup
@@ -74,9 +80,16 @@ var router = express.Router(); 				// get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', passport.authenticate('userapp'), function(req, res) {
-  T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100, offset:50 }, function(err, data, response) {
-    res.jsonp(data||'');
-  })
+  T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100, offset:0 }, function(err, data, response) {
+    console.log('got tweets');
+    //instagramApi.tag_media_recent(req.query.tag, [min_tag_id], [max_tag_id], function(err, medias, pagination, limit) {
+    instagramApi.tag_media_recent(req.query.tag, function(err, medias, pagination, limit) {
+      // instagramApi.tag_search(req.query.tag, function(err, result, limit) {
+      console.log('err, medias, pagination, limit', err, medias, pagination, limit);
+      res.jsonp([data,medias]||'');
+    });
+
+  });
 });
 
 // more routes for our API will happen here
