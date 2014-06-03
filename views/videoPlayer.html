@@ -9,6 +9,21 @@
   <nav class="playerControls" ng-show="hasFrames">
     <div class="row">
       <section class="small-1 columns">
+        <a class="button" ng-click="current = (current || 0)- 1">Previous</a>
+      </section>
+      <section class="small-10 columns">
+      <ul class="small-block-grid-10">
+        <li ng-repeat="frame in frames" ng-init="current=0;pageSize=10;">
+          <img ng-src="{{frame.url}}"/>
+        </li>
+      </ul>
+      </section>
+      <section class="small-1 columns">
+        <a class="button" ng-click="current = (current || 0)+1">Next</a>
+      </section>
+    </div>
+    <div class="row">
+      <section class="small-1 columns">
         <a ng-click="playing = !playing" class="button small {{playing ? 'playing icon-pause' : 'paused icon-play' }}"></a>
       </section>
       <div class="small-10 columns">

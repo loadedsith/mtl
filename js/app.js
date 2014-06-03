@@ -29,5 +29,12 @@ app.run(function($rootScope, user) {
   user.init({ appId: '52e1ce7391e02' });
 });
 
+app.filter('startFrom', function() {
+  return function(input, start) {
+    start = +start; //parse to int
+    return input.slice(start);
+  }
+});
+
 
 $(document).foundation();

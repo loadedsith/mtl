@@ -1,5 +1,5 @@
 angular.module('mtlApp.directives', [])
-  .directive('mtlVideoPlayer', function ($interval, $cookies) {
+  .directive('mtlVideoPlayer', function ($interval, $cookies, $filter) {
     'use strict';
     return {
       templateUrl:'views/videoPlayer.html',
@@ -50,15 +50,40 @@ angular.module('mtlApp.directives', [])
         
         scope.getFrames = function (results) {
           var frames = [];
-          for (var i = results.statuses.length - 1; i >= 0; i--) {
+          for (var i = results[0].statuses.length - 1; i >= 0; i--) {
             // results.statuses[i];
-            if (results.statuses[i].entities !== undefined) {
-              if (results.statuses[i].entities.media !== undefined){
-                frames.push(results.statuses[i].entities.media[0]['media_url']);
+            if (results[0].statuses[i].entities !== undefined) {
+              if (results[0].statuses[i].entities.media !== undefined){
+                console.log('date',results[0].statuses[i].created_at);
+                frames.push({
+                  url:results[0].statuses[i].entities.media[0]['media_url'],
+                  offsetX:0,
+                  offsetY:0,
+                  date:new Date(results[0].statuses[i].created_at)
+                  });
+                //console.log('26',scope.frames[26].date);
+                //console.log('26-',new Date(scope.frames[26].date));
+                
               }
             }
           }
-          return frames;
+          console.log(results)
+          if( results[1].length > 0 ){
+            for (var imageI = results[1].length - 1; imageI >= 0; imageI--) {
+              if (results[1][imageI].images !== undefined) {
+  //            console.log('30',scope.frames[30].date);
+    //          console.log('30',new Date(scope.frames[30].date * 1000));
+                frames.push({
+                  url:results[1][imageI].images.standard_resolution.url,
+                  offsetX:0,
+                  offsetY:0,
+                  date:new Date(results[1][imageI].created_time * 1000)
+                  });
+              }
+            }  
+          }
+          
+          return scope.sortFramesByDate(frames);
         }
         
         scope.canvas = $(element).find('#frame')[0];
@@ -75,9 +100,16 @@ angular.module('mtlApp.directives', [])
 
           return { width: srcWidth*ratio, height: srcHeight*ratio };
         }
-        
+        scope.sortFramesByDate = function (frames) {
+          var sortedFrames;
+          //console.log('26',scope.frames[26].date);
+          //console.log('30',scope.frames[30].date);
+          //console.log('26-',new Date(scope.frames[26].date));
+          //console.log('30',new Date(scope.frames[30].date * 1000));
+          sortedFrames = $filter('orderBy')(frames, 'date');
+          return sortedFrames;
+        };
         scope.updateFrame = function () {
-          console.log('Smarty King penguin');
           if (scope.drawToCanvasFrames.length > 0) {
             scope.context.canvas.width = angular.element(element).width();
             scope.context.canvas.height = angular.element(document.body).height();
@@ -85,8 +117,9 @@ angular.module('mtlApp.directives', [])
             var size = scope.calculateAspectRatioFit(image.width, image.height, scope.context.canvas.width, scope.context.canvas.height);
             var top = 0;
             var left = 0;
-            var topOffset = 0;
-            var leftOffset = 0;
+            var topOffset = scope.frames[scope.count % scope.frames.length].offsetY||0;
+            var leftOffset = scope.frames[scope.count % scope.frames.length].offsetX||0;
+            
             if (size.height <= size.width) {
               // centering = "height"
               top = scope.context.canvas.height / 2 - size.height / 2;
@@ -97,7 +130,7 @@ angular.module('mtlApp.directives', [])
 
             }
             scope.percent = (scope.count % scope.drawToCanvasFrames.length) / scope.drawToCanvasFrames.length * 100;
-            scope.context.drawImage(image, left, top, size.width + leftOffset, size.height + topOffset);
+            scope.context.drawImage(image, left + leftOffset, top + topOffset, size.width, size.height);
             scope.count++;
           }
         };
@@ -155,7 +188,7 @@ angular.module('mtlApp.directives', [])
                   scope.play();
                 }
               };
-              newImage.src = frame;
+              newImage.src = frame.url;
             }
           }
           scope.count = 0;
