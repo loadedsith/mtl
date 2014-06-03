@@ -1,0 +1,72 @@
+<form ua-login class="row">
+  <div class="row">    
+    <div class="large-4 small-centered small-6 columns">
+      <img src="../images/massTimeLapseLogo.png" style="max-width:100%;" width="512" height="512" alt="MassTimeLapseLogo">
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <center>
+        <h1>Mass Time Lapse</h1>
+      </center>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <center>
+        <p>Log in with <a ua-oauth-link="google" class="icon-google google login button" alt="Google"></a> or <a href="" class="icon-facebook login button facebook" ua-oauth-link="facebook" alt="Facebook"></a>.</p>
+      </center>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <center>
+        <p>or your email:</p>
+      </center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-6 small-centered columns">
+      <input name="login" type="text" placeholder="Email"><br>
+      <input name="password" placeholder="Password" type="password"><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <button type="submit" style="float:right">Log in </button>
+    </div>
+    <div class="small-6 columns">
+      <a href="#/signup" class="button">Sign up</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+        <p ng-show="loading"><img src="https://app.userapp.io/img/ajax-loader-transparent.gif"></p>
+        <p ng-show="error">{{ error.message }}</p>
+        <p ng-show="error"><a href="#/reset-password" class="button">Reset password</a></p>
+    </div>
+  </div>
+
+</form>
+
+<div class="row">
+  <div class="small-12 columns">
+    <center>
+      <a class="button loginBugs" href="https://github.com/loadedsith/mtl/issues">Bugs or feature suggestions</a>
+    </center>
+  </div>
+  <div class="small-12 columns">
+    <center>
+      <qrcode data-size="512" data="http://mtlv2.herokuapp.com"></qrcode>
+    </center>
+  </div>
+</div>
+
+
+
+<footer class="footer center">
+  <center>
+    <p>&copy; ByGPH.com 2012, 2014</p>
+  </center>
+</footer>

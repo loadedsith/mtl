@@ -1,1 +1,33 @@
-<canvas id='frame'></canvas>
+<div class="canvasWrapper">
+  <canvas id='frame'></canvas>
+  <div class="loadingWrapper" ng-show="loading">
+    <div class="loading">
+      <span class="bg icon-camera"></span></span>
+      <span class="fg icon-history"></span></span>
+    </div>
+  </div>
+  <nav class="playerControls" ng-show="hasFrames">
+    <div class="row">
+      <section class="small-1 columns">
+        <a ng-click="playing = !playing" class="button small {{playing ? 'playing icon-pause' : 'paused icon-play' }}"></a>
+      </section>
+      <div class="small-10 columns">
+        <div class="progress ">
+          <span class="meterOverlay" style="width: 100%" ng-click="meter($event)"></span>
+          <span class="meter" style="width: {{percent}}%" ></span>
+        </div>
+      </div>
+      <section class="small-1 columns">
+        <li class="toggle-topbar menu-icon"><a  ng-click="open = !open"><span class="icon-cog"></span></a></li>
+        
+        <div class="dropdown-list {{open?'open':'closed'}}" >
+         <ul>
+           <li>
+             <select ng-model="speed" ng-options="speed.name for speed in speeds"></select>
+           </li>
+         </ul> 
+        </div>
+      </section>
+    </div>
+  </nav>
+</div>

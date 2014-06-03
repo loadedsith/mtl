@@ -1,14 +1,17 @@
-var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives'])//  'ngAnimate', 'ui'    'ngCookies', 'ngSanitize',
-  .config(function ($routeProvider) {
+var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.directives', 'UserApp', 'ngCookies', 'monospaced.qrcode' ])// 'ngAnimate', 'ui'     'ngSanitize',
+  .config(function ($routeProvider, $locationProvider) {
     'use strict';
-
+    // $locationProvider.html5Mode(true)
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: '/views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        public: false
       })
+      .when('/login', {templateUrl: 'views/login.html', login: true, controller: 'MainCtrl'})
+      .when('/signup', {templateUrl: 'views/signup.html', public: true, controller: 'MainCtrl'})
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
 
   });
@@ -22,4 +25,9 @@ var app = angular.module('mtlApp', ['ngRoute' , 'ngResource', 'ui', 'mtlApp.dire
 
 // app.constant('DEBUG', debug || false);
 
-// $(document).foundation();
+app.run(function($rootScope, user) {
+  user.init({ appId: '52e1ce7391e02' });
+});
+
+
+$(document).foundation();

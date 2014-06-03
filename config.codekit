@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "16921",
+"creatorBuild": "17018",
 "files": {
 	"\/css\/app.css": {
 		"fileType": 16,
@@ -10,6 +10,61 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/images\/bgOverlay.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 43353,
+		"inputAbbreviatedPath": "\/images\/bgOverlay.png",
+		"outputAbbreviatedPath": "\/images\/bgOverlay.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/lenseQRLogo.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11096,
+		"inputAbbreviatedPath": "\/images\/lenseQRLogo.png",
+		"outputAbbreviatedPath": "\/images\/lenseQRLogo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/lenseQRLogoSmall.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1096,
+		"inputAbbreviatedPath": "\/images\/lenseQRLogoSmall.png",
+		"outputAbbreviatedPath": "\/images\/lenseQRLogoSmall.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/massTimeLapseLogo.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 51929,
+		"inputAbbreviatedPath": "\/images\/massTimeLapseLogo.png",
+		"outputAbbreviatedPath": "\/images\/massTimeLapseLogo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/massTimeLapseLogoSM.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42603,
+		"inputAbbreviatedPath": "\/images\/massTimeLapseLogoSM.png",
+		"outputAbbreviatedPath": "\/images\/massTimeLapseLogoSM.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/index.html": {
 		"fileType": 8192,
@@ -42,6 +97,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/custom\/qrcode.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/custom\/qrcode.js",
+		"outputAbbreviatedPath": "\/js\/custom\/min\/qrcode-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/directives\/MTLVideoPlayer.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -55,8 +121,8 @@
 		},
 	"\/js\/services\/Frames.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/services\/Frames.js",
 		"outputAbbreviatedPath": "\/js\/services\/min\/Frames-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -77,8 +143,8 @@
 		},
 	"\/js\/vendor\/angular-retina.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/angular-retina.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/angular-retina.min-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -143,8 +209,8 @@
 		},
 	"\/js\/vendor\/oauth-signature.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/oauth-signature.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/oauth-signature.min-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -154,8 +220,8 @@
 		},
 	"\/js\/vendor\/picturefill.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/picturefill.min.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/picturefill.min-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -169,6 +235,17 @@
 		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/js\/vendor\/placeholder.js",
 		"outputAbbreviatedPath": "\/js\/vendor\/min\/placeholder-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/min\/server-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/min\/server-ck.js",
+		"outputAbbreviatedPath": "\/min\/min\/server-ck-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -350,6 +427,22 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/scss\/_font.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 5,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/scss\/_font.scss",
+		"outputAbbreviatedPath": "\/css\/_font.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/scss\/_settings.scss": {
 		"createSourceMap": 0,
 		"debugStyle": 0,
@@ -378,14 +471,25 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"shouldRunAutoprefixer": 0,
+		"shouldRunAutoprefixer": 1,
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/test\/spec\/controllers\/main.js": {
+	"\/server.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/server.js",
+		"outputAbbreviatedPath": "\/min\/server-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/test\/spec\/controllers\/main.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/controllers\/main.js",
 		"outputAbbreviatedPath": "\/test\/spec\/controllers\/min\/main-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -417,8 +521,8 @@
 		},
 	"\/test\/spec\/directives\/MTLVideoPlayer.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/directives\/MTLVideoPlayer.js",
 		"outputAbbreviatedPath": "\/test\/spec\/directives\/min\/MTLVideoPlayer-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -428,8 +532,8 @@
 		},
 	"\/test\/spec\/services\/Frames.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/services\/Frames.js",
 		"outputAbbreviatedPath": "\/test\/spec\/services\/min\/Frames-ck.js",
 		"outputPathIsOutsideProject": 0,
@@ -450,14 +554,32 @@
 		},
 	"\/test\/spec\/services\/videoReplay.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/test\/spec\/services\/videoReplay.js",
 		"outputAbbreviatedPath": "\/test\/spec\/services\/min\/videoReplay-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/views\/controls.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/views\/controls.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/views\/login.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/views\/login.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/views\/main.html": {
 		"fileType": 8192,
@@ -473,6 +595,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/views\/search.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/views\/signup.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/views\/signup.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -505,10 +636,10 @@
 	"bowerAbbreviatedPath": "",
 	"displayValue": "mtlv2",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "brackets_darkGray"
+	"iconImageName": "meme-trap"
 	},
 "projectSettings": {
-	"alwaysUseExternalServer": 0,
+	"alwaysUseExternalServer": 1,
 	"animateCSSInjections": 1,
 	"autoApplyPSLanguageSettingsStyle": 0,
 	"autoprefixerBrowserString": "> 1%, last 2 versions, ff 17, opera 12.1",
@@ -563,10 +694,6 @@
 		"newlines_after_classes": {
 			"active": 0,
 			"flagValue": 3
-			},
-		"no-unnecessary_fat_arrows": {
-			"active": 1,
-			"flagValue": -1
 			},
 		"no_backticks": {
 			"active": 1,
@@ -624,6 +751,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"no_unnecessary_fat_arrows": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"non_empty_constructor_needs_parens": {
 			"active": 0,
 			"flagValue": -1
@@ -636,7 +767,7 @@
 	"coffeeMinifyOutput": 1,
 	"coffeeOutputStyle": 0,
 	"coffeeSyntaxCheckerStyle": 1,
-	"externalServerAddress": "http:\/\/localhost:8888",
+	"externalServerAddress": "http:\/\/localhost:5000",
 	"externalServerPreviewPathAddition": "",
 	"genericWebpageFileExtensionsString": "html, htm, shtml, shtm, xhtml, php, jsp, asp, aspx, erb, ctp",
 	"hamlAutoOutputPathRelativePath": "",
@@ -1071,7 +1202,7 @@
 	"sassDecimalPrecision": 5,
 	"sassOutputStyle": 0,
 	"sassUseLibsass": 0,
-	"shouldRunAutoprefixer": 0,
+	"shouldRunAutoprefixer": 1,
 	"shouldRunBless": 0,
 	"skippedItemsString": "_cache, logs, \/node_modules, _logs, cache, \/bower_components, .git, log, .svn, .hg",
 	"slimAutoOutputPathRelativePath": "",

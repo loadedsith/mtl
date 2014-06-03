@@ -1,5 +1,5 @@
 angular.module('mtlApp.directives', [])
-  .directive('mtlVideoPlayer', function ($interval) {
+  .directive('mtlVideoPlayer', function ($interval, $cookies) {
     'use strict';
     return {
       templateUrl:'views/videoPlayer.html',
@@ -7,82 +7,158 @@ angular.module('mtlApp.directives', [])
         frames:"=mtlFrames"
       },
       link: function postLink(scope, element, attrs) {
+        scope.speeds = [
+          {name:'1', ms: 1000},
+          {name:'2', ms: 500},
+          {name:'3', ms: 333},
+          {name:'4', ms: 250},
+          {name:'5', ms: 200},
+          {name:'6', ms: 166},
+          {name:'7', ms: 142},
+          {name:'8', ms: 125},
+          {name:'9', ms: 111},
+          {name:'10', ms: 100},
+          {name:'15', ms: 150},
+          {name:'20', ms: 50}
+        ];
+        scope.hasFrames = false;
+        scope.percent = 1;
         scope.yOffset = 0;
-        scope.getFrames = function (results) {
-          var frames = [];
-          console.log('results.statuses[0]', results.statuses[0]);
-          for (var i = results.statuses.length - 1; i >= 0; i--) {
-            results.statuses[i];
-            if (results.statuses[i].entities !== undefined) {
-              if (results.statuses[i].entities.media !== undefined){
-                console.log('results.statuses[i].entities.media[0][\'media_url\']', results.statuses[i].entities.media[0]['media_url']);
-                frames.push(results.statuses[i].entities.media[0]['media_url']);
-              }
-            } else {
-
+        scope.loading = false;
+        
+  
+        scope.meter = function ($event) {
+          scope.count = Math.floor(  ( $event.offsetX / angular.element($event.toElement).width() ) * scope.frames.length);
+        };
+  
+        
+        if ($cookies.speed !== undefined) {
+          for (var i = scope.speeds.length - 1; i >= 0; i--) {
+            if (Number($cookies.speed) === Number(scope.speeds[i].ms)) {
+              console.log('scope.speed = scope.speeds[i];', scope.speed , scope.speeds[i]);
+              scope.speed = scope.speeds[i];
             }
           }
-      
+        } 
+        if (scope.speed === undefined) {
+          scope.speed = scope.speeds[3];
+        }
+        
+        scope.$watch('speed',function () {
+          $cookies.speed = scope.speed.ms;
+        });
+        
+        scope.getFrames = function (results) {
+          var frames = [];
+          for (var i = results.statuses.length - 1; i >= 0; i--) {
+            // results.statuses[i];
+            if (results.statuses[i].entities !== undefined) {
+              if (results.statuses[i].entities.media !== undefined){
+                frames.push(results.statuses[i].entities.media[0]['media_url']);
+              }
+            }
+          }
           return frames;
         }
+        
         scope.canvas = $(element).find('#frame')[0];
-        // console.log('canvas', scope.canvas);
+        
         scope.context = scope.canvas.getContext("2d");
+        
         scope.drawToCanvasFrames = [];
         
-        for (var i = scope.frames.length - 1; i >= 0; i--) {
-          var frame = scope.frames[i];
-          var newImage = new Image();
-          newImage.onload = function (a,b,c) {
-            // console.log('scope.imagesCanvas', this.width);
-            scope.context.drawImage(this,scope.yOffset,0);
-            scope.yOffset += this.width;
-          };
-          newImage.src = frame;
-          scope.drawToCanvasFrames.push(newImage);
+        scope.count = 0;
+        // context.drawImage(img,10,10);
+        scope.calculateAspectRatioFit = function (srcWidth, srcHeight, maxWidth, maxHeight) {
+
+          var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+          return { width: srcWidth*ratio, height: srcHeight*ratio };
         }
         
-        // context.drawImage(img,10,10);
-        scope.count = 0;
         scope.updateFrame = function () {
+          console.log('Smarty King penguin');
           if (scope.drawToCanvasFrames.length > 0) {
-            scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.context.canvas.width, scope.context.canvas.height);
+            scope.context.canvas.width = angular.element(element).width();
+            scope.context.canvas.height = angular.element(document.body).height();
+            var image = scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length];
+            var size = scope.calculateAspectRatioFit(image.width, image.height, scope.context.canvas.width, scope.context.canvas.height);
+            var top = 0;
+            var left = 0;
+            var topOffset = 0;
+            var leftOffset = 0;
+            if (size.height <= size.width) {
+              // centering = "height"
+              top = scope.context.canvas.height / 2 - size.height / 2;
+
+            } else {
+              left = scope.context.canvas.width / 2 - size.width / 2;
+              // topOffset = size.width / 2 * -1;
+
+            }
+            scope.percent = (scope.count % scope.drawToCanvasFrames.length) / scope.drawToCanvasFrames.length * 100;
+            scope.context.drawImage(image, left, top, size.width + leftOffset, size.height + topOffset);
             scope.count++;
           }
         };
-        scope.timer = $interval(scope.updateFrame, 200);
+
+        // scope.updateFrame = function () {
+        //   if (scope.drawToCanvasFrames.length > 0) {
+        //     scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.context.canvas.width, scope.context.canvas.height);
+        //     scope.count++;
+        //   }
+        // };
+
+
+        scope.$watch('playing',function () {
+          scope.play();
+        });
+        scope.$watch('speed',function () {
+          scope.play();
+        });
+        
+        scope.play = function () {
+          if( scope.timer !== undefined) {
+            $interval.cancel(scope.timer);
+          }
+          if (scope.playing === true) {
+            scope.timer = $interval(scope.updateFrame, scope.speed.ms||200);              
+          }
+        };
+
+
+        
         scope.$on('updateHashtag', function(event,data) {
-          console.log('data', data);
-          console.log('excited Yellow-banded Dart frog');
+          scope.loading = true;
           scope.frames = scope.getFrames(data.results);
-          console.log('scope.frames', scope.frames);
           scope.yOffset = 0;
         
           scope.canvas = $(element).find('#frame')[0];
           scope.context = scope.canvas.getContext("2d");
           scope.drawToCanvasFrames = [];
-        
+          if (scope.frames.length > 0){
+            scope.hasFrames = true;
+          }else{
+            scope.hasFrames = false;
+          }
+          
           for (var i = scope.frames.length - 1; i >= 0; i--) {
             var frame = scope.frames[i];
             if (! (frame in scope.drawToCanvasFrames)){
               //is it a unique frame
               var newImage = new Image();
               newImage.onload = function (a,b,c) {
-                scope.context.drawImage(this, scope.yOffset, 0);
-                scope.yOffset += this.width;
+                scope.drawToCanvasFrames.push(this);
+                if (scope.drawToCanvasFrames.length === scope.frames.length ){
+                  scope.loading = false;
+                  scope.playing = true;
+                  scope.play();
+                }
               };
               newImage.src = frame;
-              scope.drawToCanvasFrames.push(newImage);
-              
             }
           }
           scope.count = 0;
-          scope.updateFrame = function () {
-            if (scope.drawToCanvasFrames.length > 0) {
-              scope.context.drawImage(scope.drawToCanvasFrames[scope.count % scope.drawToCanvasFrames.length], 0, 0, scope.context.canvas.width, scope.context.canvas.height);
-              scope.count++;
-            }
-          };
         });
         console.log('attrs.frames||attrs', attrs.frames||attrs);
       },

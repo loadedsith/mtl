@@ -1,39 +1,30 @@
 'use strict';
 
 angular.module('mtlApp')
-  .controller('MainCtrl', function ($scope, FramesService) {
+  .controller('MainCtrl', function ($scope, FramesService, $timeout, $cookies) {
     $scope.templates = {
       'video':'views/video.html',
-      'search':'views/search.html'
+      'search':'views/search.html',
+      'controls':'views/controls.html'
     }
+    
+    if ($cookies.drawerOpen !== true) {
+      $scope.drawerOpen = true;
+    } else {
+      $scope.drawerOpen = false;
+    }
+    
+    $scope.$watch('drawerOpen', function () {
+      console.log('Smarty rabbit');
+      $cookies.drawerOpen = $scope.drawerOpen;
+    });
+    
     $scope.search = function (hashtag) {
-      console.log('itchy Painted Hunting Dog',hashtag);
       if (hashtag !== undefined) {
         FramesService.hashtagSearch(hashtag);
+        FramesService.loading = true;
       }
+      $scope.drawerOpen = false;
     }
     $scope.debug = "test";
-    $scope.frames = [
-      'placeholders/birdDogging.png', 'placeholders/bubble.png', 'placeholders/castle.png', 'placeholders/cloudsRollingOff.png', 'placeholders/fire.png', 'placeholders/goldenGate.png', 'placeholders/hotair.png', 'placeholders/leopard.png', 'placeholders/solitaryCloud.png', 'placeholders/street.png', 'placeholders/tennis.png', 'placeholders/trees.png', 'placeholders/treesRoad.jpeg'
-    ];
-    $scope.getFrames = function (results) {
-      var frames = [];
-      console.log('results.statuses[0]', results.statuses[0]);
-      for (var i = results.statuses.length - 1; i >= 0; i--) {
-        results.statuses[i];
-        if (results.statuses[i].entities !== undefined) {
-          if (results.statuses[i].entities.media !== undefined){
-            console.log('gotMedia: status.entities.media', results.statuses[i].entities.media);
-            frames.push(results.statuses[i].entities.media['media_url']);
-          }
-        } else {
-
-        }
-      }
-      
-      return frames;
-    }
-    $scope.$on('updateHashtag',function (event,data,c) {
-      // $scope.frames = $scope.getFrames(data.results)
-    });
   });

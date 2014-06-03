@@ -4,11 +4,13 @@
     "foundation": "zurb/bower-foundation",
     "angular-route": "~1.2.16",
     "angular-ui": "~0.4.0",
-    "angular-cookie": "~4.x",
+    "angular-cookies": "~1.2.16",
     "angular-resource": "~1.2.16",
     "angular": "~1.2.16",
     "angular-animate": "~1.2.16",
-    "modernizr": "~2.8.2"
+    "modernizr": "~2.8.2",
+    "userapp-angular": "~2.0.3",
+    "angular-qrcode": "~3.1.0"
   },
   "resolutions": {
     "angular": "~1.2.16"

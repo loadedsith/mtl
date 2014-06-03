@@ -1,0 +1,49 @@
+
+<div class="controls row">
+  
+  <nav class="tab-bar">
+    <section class="left-small">
+      <a class="left-off-canvas-toggle icon-cog button small" ng-click="drawerOpen = !drawerOpen"><span></span></a>
+    </section>
+    <div class="title">MLTv2</div>
+  </nav>
+  <div class="off-canvas-wrap" ng-class="{'move-right' : !!drawerOpen}" data-offcanvas>
+    <div class="inner-wrap">
+
+      <!-- Off Canvas Menu -->
+      <aside class="left-off-canvas-menu">
+          <!-- whatever you want goes here -->
+          <ul>
+            <li>
+              <form ng-submit="search(hashtag)" style="display:inline;">
+                  <input class="hashtagSearch" type="text" value="{{hashtag||''}}" placeholder="{{hashtag||'Search'}}" ng-model="hashtag" />
+                  <input type="button" class="button" value="Create Timelapse"  ng-click="search(hashtag)"/>
+              </form>
+            </li>
+            <li>
+              <a class="button" href="#" ua-logout ng-show="user.authenticated">Log Out</a>
+            </li>
+            <li>
+              <a class="button" href="https://github.com/loadedsith/mtl/issues">Bugs or feature suggestions</a>
+            </li>
+            <li>
+              <qrcode data-size="128" data="{{hashtag}}" ng-show="!!hashtag"></qrcode>
+            </li>
+          </ul>
+          
+      </aside>
+      <!-- main content goes here -->
+      <!--<span class="icon-history"></span><span class="mls"> icon-history</span></span>-->
+			<!--<span class="icon-users"></span><span class="mls"> icon-users</span></span>-->
+			<!--<span class="icon-cog"></span><span class="mls"> icon-cog</span></span>-->
+			<!--<span class="icon-menu"></span><span class="mls"> icon-menu</span></span>-->
+			<!--<span class="icon-play"></span><span class="mls"> icon-play</span></span>-->
+			<!--<span class="icon-pause"></span><span class="mls"> icon-pause</span></span>-->
+			<!--<span class="icon-camera"></span><span class="mls"> icon-camera</span></span>-->
+     
+
+    <!-- close the off-canvas menu -->
+  </div>
+
+
+</div>
