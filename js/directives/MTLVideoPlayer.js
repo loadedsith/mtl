@@ -58,7 +58,7 @@ angular.module('mtlApp.directives', [])
                 frames.push({
                   url:results[0].statuses[i].entities.media[0]['media_url'],
                   offsetX:0,
-                  offsetY:100,
+                  offsetY:0,
                   date:new Date(results[0].statuses[i].created_at)
                   });
                 //console.log('26',scope.frames[26].date);
@@ -76,7 +76,7 @@ angular.module('mtlApp.directives', [])
                 frames.push({
                   url:results[1][imageI].images.standard_resolution.url,
                   offsetX:0,
-                  offsetY:100,
+                  offsetY:0,
                   date:new Date(results[1][imageI].created_time * 1000)
                   });
               }
