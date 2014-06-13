@@ -12,7 +12,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var _ = require('underscore');
 var jade = require('jade');
-
+var os = require("os");
+var host = os.hostname();
 var passport = require('passport');
 var UserAppStrategy = require('passport-userapp').Strategy;
 var users = [];
@@ -23,6 +24,27 @@ instagramApi.use({
   client_secret: process.env.instagramClientSecret
 });
 
+var redirect_uri = 'http://mtlv2.herokuapp.com/handleauth';
+
+exports.authorize_user = function(req, res) {
+  res.redirect(instagramApi.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+};
+
+exports.handleauth = function(req, res) {
+  instagramApi.authorize_user(req.query.code, redirect_uri, function(err, result) {
+    if (err) {
+      console.log(err.body);
+      res.send("Didn't work");
+    } else {
+      console.log('Yay! Access token is ' + result.access_token);
+      res.send('You made it!!');
+    }
+  });
+};
+// This is where you would initially send users to authorize
+app.get('/authorize_user', exports.authorize_user);
+// This is your redirect URI
+app.get('/handleauth', exports.handleauth);
 
 // Passport session setup
 passport.serializeUser(function(user, done) {

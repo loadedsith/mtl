@@ -15,6 +15,10 @@
           <!-- whatever you want goes here -->
           <ul>
             <li>
+              <a class="instagram login button" href="http://{{host}}/authorize_user">Login to Instagram</a>
+            </li>
+            
+            <li>
               <form ng-submit="search(hashtag)" style="display:inline;">
                   <input class="hashtagSearch" type="text" value="{{hashtag||''}}" placeholder="{{hashtag||'Search'}}" ng-model="hashtag" />
                   <input type="button" class="button" value="Create Timelapse"  ng-click="search(hashtag)"/>
