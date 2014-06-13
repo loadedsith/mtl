@@ -15,8 +15,11 @@ var cookieParser = require('cookie-parser');
 var _ = require('underscore');
 var passport = require('passport');
 var UserAppStrategy = require('passport-userapp').Strategy;
+
 var users = [];
+
 var instagramApi = require('instagram-node').instagram();
+var instagramToken = false;
 
 instagramApi.use({
   client_id: process.env.instagramClientId,
@@ -36,6 +39,8 @@ exports.handleauth = function(req, res) {
       res.send('We are sorry, but your login was unsuccessful.<script>alert("We are sorry, but your login was unsuccessful.")');
       res.redirect('http://mtlv2.herokuapp.com/#/'); 
     } else {
+      instagramToken = result.access_token;
+      instagramApi.use({access_token:result.access_token});
       console.log('Yay! Access token is ' + result.access_token);
       res.redirect('http://mtlv2.herokuapp.com/#/'); 
     }
