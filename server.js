@@ -40,7 +40,7 @@ exports.handleauth = function(req, res) {
       res.redirect('http://mtlv2.herokuapp.com/#/'); 
     } else {
       instagramToken = result.access_token;
-      instagramApi.use({access_token:result.access_token});
+      // instagramApi.use({access_token:result.access_token});
       console.log('Yay! Access token is ' + result.access_token);
       res.redirect('http://mtlv2.herokuapp.com/#/'); 
     }
