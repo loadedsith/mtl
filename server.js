@@ -1,19 +1,18 @@
+/*predef require:true, Modernizr:true */
+
 // server.js
 
 // BASE SETUP
 // =============================================================================
 
 // call the packages we need
-var express    = require('express'); 		// call express
-var app        = express(); 				// define our app using express
+var express    = require('express');    // call express
+var app        = express();         // define our app using express
 var bodyParser = require('body-parser');
 var Twit = require('twit');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var _ = require('underscore');
-var jade = require('jade');
-var os = require("os");
-var host = os.hostname();
 var passport = require('passport');
 var UserAppStrategy = require('passport-userapp').Strategy;
 var users = [];
@@ -34,10 +33,11 @@ exports.handleauth = function(req, res) {
   instagramApi.authorize_user(req.query.code, redirect_uri, function(err, result) {
     if (err) {
       console.log(err.body);
-      res.send("Didn't work");
+      res.send('We are sorry, but your login was unsuccessful.<script>alert("We are sorry, but your login was unsuccessful.")');
+      res.redirect('http://mtlv2.herokuapp.com/#/'); 
     } else {
       console.log('Yay! Access token is ' + result.access_token);
-      res.send('You made it!!');
+      res.redirect('http://mtlv2.herokuapp.com/#/'); 
     }
   });
 };
@@ -61,7 +61,7 @@ passport.use(new UserAppStrategy({
     function (userprofile, done) {
       process.nextTick(function () {
         var exists = _.any(users, function (user) {
-            return user.id == userprofile.id;
+            return user.id === userprofile.id;
         });
     
         if (!exists) {
@@ -74,10 +74,10 @@ passport.use(new UserAppStrategy({
   ));
   
 var T = new Twit({
-    consumer_key:         process.env.consumer_key
-  , consumer_secret:      process.env.consumer_secret
-  , access_token:         process.env.access_token
-  , access_token_secret:  process.env.access_token_secret
+    consumer_key:         process.env.consumer_key,
+    consumer_secret:      process.env.consumer_secret,
+    access_token:         process.env.access_token,
+    access_token_secret:  process.env.access_token_secret
 });
 
 console.log('process.env', process.env);
@@ -91,20 +91,20 @@ app.use(bodyParser());
 
 
 
-var port = process.env.PORT || 8080; 		// set our port
+var port = process.env.PORT || 8080;    // set our port
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
 // ROUTES FOR OUR API
 // =============================================================================
-var router = express.Router(); 				// get an instance of the express Router
+var router = express.Router();        // get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 
 router.get('/', passport.authenticate('userapp'), function(req, res) {
-  T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100, offset:0 }, function(err, data, response) {
-    instagramApi.tag_media_recent(req.query.tag, function(err, medias, pagination, limit) {
+  T.get('search/tweets', { q: req.query.tag + ' since:2011-11-11', count: 100, offset:0 }, function(err, data) {//response
+    instagramApi.tag_media_recent(req.query.tag, function(err, medias) {//pagination, limit
       res.jsonp([data,medias]||'');
     });
   });
@@ -114,10 +114,6 @@ router.get('/', passport.authenticate('userapp'), function(req, res) {
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-
-var routes = {};
-
-app.set('view engine', 'jade');
 
 // routes.index = function(req, res){
   // res.render('index');
