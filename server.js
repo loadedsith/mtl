@@ -29,6 +29,10 @@ instagramApi.use({
 var redirect_uri = 'http://mtlv2.herokuapp.com/handleauth';
 
 exports.authorize_user = function(req, res) {
+  instagramApi.use({
+    client_id: process.env.instagramClientId,
+    client_secret: process.env.instagramClientSecret
+  });
   res.redirect(instagramApi.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
 };
 
